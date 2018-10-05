@@ -1,0 +1,6 @@
+unlink("grib.tar.gz")
+system("tar cvzf grib.tar.gz gribfiles")
+files <- list.files("gribfiles", recursive = TRUE, pattern = "grb$")
+writeLines(files, "griblist.txt")
+library(piggyback)
+pb_upload("grib.tar.gz", tag = "v0.0.1")
